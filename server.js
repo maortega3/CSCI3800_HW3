@@ -18,7 +18,7 @@ app.get('/', function (req, res) {
         token: token
     });
 
-    //Using the github module to throw an error or 
+    //Using the github module to throw an error or return my username if it is sent in
     github.user.get({ user: 'maortega3'} , function(err, res) {
         console.log("Error Thrown", err);
         console.log("All good.", res);
