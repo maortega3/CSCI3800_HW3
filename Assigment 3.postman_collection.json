@@ -1,0 +1,100 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Assigment 3",
+		"_postman_id": "6ad7f946-e3cc-74c0-c980-61cde0d38e4b",
+		"description": "This collection is a variety of test associated with Assignment 3 for CSCI 3800 Web API's. This assignent is about protecting an API's target endpoint with OAuth 2.0. This requires creation of multiple proxy's, and a an authorization layer witch works as an intermediary for our service API. We validate clients with client_id and client secret's witch will supply us with an authorization bearer token. This Token allows timed access to the resources available within the APUI service. ",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://maortega3-test.apigee.net/oauth/client_credential/accesstoken?grant_type=client_credentials",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests['Status Code is 200'] = (responseCode.code === 200);  // Run this test first to ensure everything went okay",
+							"",
+							"if (responseCode.code === 200) {",
+							"    try{",
+							"        var jsonData = JSON.parse(responseBody); // our search was successful so save the body in a parsed repsonse.",
+							"        var flag = false;  // flag will be used to test if our book has returned proper strings",
+							"        var token = jsonData.access_token;",
+							"        if (token) { ",
+							"            flag = true;",
+							"            postman.setEnvironmentVariable(\"token\", token);",
+							"        }",
+							"        ",
+							"    }",
+							"    catch(e){    // catch an exception in the case that the search fails",
+							"        console.log(e);",
+							"    }",
+							"    tests['token was passed in'] = ( flag === true );    ",
+							"}"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "https://maortega3-test.apigee.net/oauth/client_credential/accesstoken?grant_type=client_credentials",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "iEQaX1fdb3dere71h1JDNZdoxbWHcxuw",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "client_secret",
+							"value": "eogAXAPYgTNIdaXg",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://maortega3-test.apigee.net/csci3800hw3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests['Status Code is 200'] = (responseCode.code === 200);  // Run this test first to ensure everything went okay"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://maortega3-test.apigee.net/csci3800hw3",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
