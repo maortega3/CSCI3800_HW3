@@ -3,7 +3,7 @@
 var express = require('express');
 var app = express();
 var localPort = 9000;
-// A Call to the Base route will instantiate an instance of gihub
+// A Call to the Base route will instantiate an instance of github
 app.get('/', function (req, res) {
     console.log("Ping home");
     //We have a GET to our base url now we will create our github variables  
