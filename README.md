@@ -9,4 +9,4 @@ Apigee Hosted URL- http://maortega3-test.apigee.net/csci3800hw3
 Give	one	reason	(there	are	many)	OAuth	tokens	should	not	be	granted	in	the	main	flow,	
 assuming	the	user	has	sent	in	the	correct	credentials:
 
-You don't put Oauth tokens in the main flow because they are what grant access to the main flow; it would be counter productive to do this.
+You don't put Oauth tokens in the main flow because they are what grant access to the main flow; it would be counter productive to do this, and you would probably get hacked. Tokens are like temporary passwords, so you have to treat them as such.
