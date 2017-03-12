@@ -1,5 +1,5 @@
 // <mark.ortega@ucdenver.edu>
-// Assignment for web api 3800. Main Proxy (Lacking Functionality Especially in error handling..)
+// Assignment for web api 3800. Main Proxy (Lacking Functionality Especially in error handling..) Continue work... :(((
 var express = require('express');
 var app = express();
 var localPort = 9000;
