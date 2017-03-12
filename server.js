@@ -1,6 +1,5 @@
 // <mark.ortega@ucdenver.edu>
-// Assignment for web api 3800. Main Proxy (Lacking Functionality Especially in error handling..) Continue work... :(((
-var express = require('express');
+// Assignment for web api 3800. Main Proxy (Need to implement better error handling..) 
 var app = express();
 var localPort = 9000;
 // A Call to the Base route will instantiate an instance of github
