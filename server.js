@@ -12,16 +12,16 @@ app.get('/', function (req, res) {
         version: "3.0.0"
     });
 
-
-    var token =  "THE TOKEN WOULD GO HERE"; //DON'T STORE ON GITH
+    var token =  "THE TOKEN WOULD GO HERE"; //DON'T STORE ON GITHUB
     github.authenticate({
         type: "oauth",
         token: token
     });
 
+    //Using the github module to throw an error or 
     github.user.get({ user: 'maortega3'} , function(err, res) {
-        console.log("GOT ERR?", err);
-        console.log("GOT RES?", res);
+        console.log("Error Thrown", err);
+        console.log("All good.", res);
         res.send(res);
     });
 })
